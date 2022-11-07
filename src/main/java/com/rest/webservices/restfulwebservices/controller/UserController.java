@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rest.webservices.restfulwebservices.service.UserDaoService;
@@ -31,7 +33,10 @@ public class UserController {
 		return userDaoService.findOne(id);
 	}
 	
-//	@PostMapping(path = "/users")
-//	public User 
+	@PostMapping(path = "/users")
+	public User addUser(@RequestBody User user) {
+		userDaoService.save(user);
+		return user;
+	}
 	
 }
