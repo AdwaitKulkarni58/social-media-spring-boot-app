@@ -12,7 +12,7 @@ import com.rest.webservices.restfulwebservices.user.User;
 public class UserDaoService {
 	
 	private static List<User> users = new ArrayList<>();
-	private static int count = 0;
+	private static int count = 1;
 	
 	public List<User> findAll() {
 		return users;
@@ -27,6 +27,10 @@ public class UserDaoService {
 		user.setId(count++);
 		users.add(user);
 		return user;
+	}
+	
+	public void delete() {
+		users.clear();
 	}
 	
 }
