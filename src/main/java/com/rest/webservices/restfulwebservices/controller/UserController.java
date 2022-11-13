@@ -40,8 +40,10 @@ public class UserController {
 	public ResponseEntity<User> createNewUser(@RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
-				.toUri();
-		return ResponseEntity.created(location).build();
+				.toUri(); // get the current path, add "/{id}" to the end and replace the id with the
+							// newly created user's id
+		return ResponseEntity.created(location).build(); // return the correct status code when the user is created with
+															// the new location
 	}
 
 	@DeleteMapping(path = "/users")
