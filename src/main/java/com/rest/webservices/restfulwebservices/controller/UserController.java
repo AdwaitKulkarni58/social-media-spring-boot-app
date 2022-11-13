@@ -27,17 +27,17 @@ public class UserController {
 	}
 
 	@GetMapping(path = "/users")
-	public List<User> getUsers() {
+	public List<User> findAlUsers() {
 		return userDaoService.findAll();
 	}
 
 	@GetMapping(path = "/users/{id}")
-	public User getUser(@PathVariable int id) {
+	public User findOneUser(@PathVariable int id) {
 		return userDaoService.findOne(id);
 	}
 
 	@PostMapping(path = "/users")
-	public ResponseEntity<User> addUser(@RequestBody User user) {
+	public ResponseEntity<User> createNewUser(@RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri();
@@ -45,7 +45,7 @@ public class UserController {
 	}
 
 	@DeleteMapping(path = "/users")
-	public void removeUsers() {
+	public void removeAllUsers() {
 		userDaoService.delete();
 	}
 }
