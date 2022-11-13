@@ -3,6 +3,7 @@ package com.rest.webservices.restfulwebservices.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class UserController {
 		this.userDaoService = userDaoService;
 	}
 
+	// returns all the users currently existing
 	@GetMapping(path = "/users")
 	public List<User> getUsers() {
 		return userDaoService.findAll(); 
@@ -35,9 +37,9 @@ public class UserController {
 	}
 	
 	@PostMapping(path = "/users")
-	public User addUser(@RequestBody User user) {
+	public ResponseEntity<User> addUser(@RequestBody User user) {
 		userDaoService.save(user);
-		return user;
+		return ResponseEntity.created(null).build();
 	}
 	
 	@DeleteMapping(path = "/users")
