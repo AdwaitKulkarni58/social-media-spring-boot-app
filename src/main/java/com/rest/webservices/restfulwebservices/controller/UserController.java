@@ -55,4 +55,14 @@ public class UserController {
 	public void removeAllUsers() {
 		userDaoService.delete();
 	}
+
+	@DeleteMapping(path = "/users/{id}")
+	public User removeOneUser(@PathVariable int id) {
+		User user = userDaoService.findOne(id);
+		if (user == null) {
+			throw new UserNotFoundException("User with given i dnot found");
+		}
+		return userDaoService.findOne(id);
+	}
+
 }

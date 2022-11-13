@@ -41,4 +41,8 @@ public class UserDaoService {
 		users.clear();
 	}
 
+	public void deleteUser(User user) {
+		//
+	}
+
 }
