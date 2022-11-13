@@ -26,7 +26,6 @@ public class UserController {
 		this.userDaoService = userDaoService;
 	}
 
-	// returns all the users currently existing
 	@GetMapping(path = "/users")
 	public List<User> getUsers() {
 		return userDaoService.findAll();
