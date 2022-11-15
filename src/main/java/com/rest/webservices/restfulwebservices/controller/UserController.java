@@ -17,6 +17,8 @@ import com.rest.webservices.restfulwebservices.controller.exception.UserNotFound
 import com.rest.webservices.restfulwebservices.service.UserDaoService;
 import com.rest.webservices.restfulwebservices.user.User;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -42,7 +44,7 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/users")
-	public ResponseEntity<User> createNewUser(@RequestBody User user) {
+	public ResponseEntity<User> createNewUser(@Valid @RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri(); // get the current path, add "/{id}" to the end and replace the id with the
