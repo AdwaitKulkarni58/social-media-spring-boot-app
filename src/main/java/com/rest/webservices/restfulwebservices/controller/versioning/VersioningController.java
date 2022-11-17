@@ -10,4 +10,9 @@ public class VersioningController {
 	public Person getPerson() {
 		return new Person("First Last");
 	}
+
+	@GetMapping("/v2/person")
+	public V2Person getV2Person() {
+		return new V2Person(new Name("First", "Last"));
+	}
 }
