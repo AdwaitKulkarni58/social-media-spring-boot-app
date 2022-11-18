@@ -2,13 +2,17 @@ package com.rest.webservices.restfulwebservices.user;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class User {
 
 	// attributes of user
 
+	@Id
 	private Integer id;
 
 	@Size(min = 2)
