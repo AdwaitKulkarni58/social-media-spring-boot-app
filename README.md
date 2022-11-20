@@ -9,6 +9,6 @@ Add a new user to the existing list of users.
 ### 3) DELETE /users:  
 Remove all the users currently existing in the database.  
 ### 4) GET /users/{id}:  
-Get the user with a particular id from the database.  
+Get an user with a particular id from the database.  
 ### 5) DELETE /users/{id}:  
 Delete an user with a particular id from the database.
